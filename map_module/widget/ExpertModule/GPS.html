@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #GPSseg tr {
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h2>GPS三維形變查詢</h2>
+    <div>
+        <div id="GPSseg" class="ui segment">
+            <table style="width:100%;">
+                <tbody>
+                    <tr>
+                        <td colspan="2">
+                            <div class="ui toggle checkbox" id="GPSLyrCB">
+                                <input type="checkbox" name="GPSLyr">
+                                <label>GPS測站圖層</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:75px;">縣市</td>
+                        <td>
+                            <select class="ui fluid dropdown" id="GPS_county">
+                                <option value="*" selected>全部</option>
+                                <option value="臺北市">臺北市</option>
+                                <option value="新北市">新北市</option>
+                                <option value="基隆市">基隆市</option>
+                                <option value="桃園市">桃園市</option>
+                                <option value="新竹市">新竹市</option>
+                                <option value="新竹縣">新竹縣</option>
+                                <option value="苗栗縣">苗栗縣</option>
+                                <option value="臺中市">臺中市</option>
+                                <option value="彰化縣">彰化縣</option>
+                                <option value="南投縣">南投縣</option>
+                                <option value="雲林縣">雲林縣</option>
+                                <option value="嘉義市">嘉義市</option>
+                                <option value="嘉義縣">嘉義縣</option>
+                                <option value="臺南市">臺南市</option>
+                                <option value="高雄市">高雄市</option>
+                                <option value="屏東縣">屏東縣</option>
+                                <option value="宜蘭縣">宜蘭縣</option>
+                                <option value="花蓮縣">花蓮縣</option>
+                                <option value="臺東縣">臺東縣</option>
+                                <option value="澎湖縣">澎湖縣</option>
+                                <option value="金門縣">金門縣</option>
+                                <option value="連江縣">連江縣</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>GPS測站</td>
+                        <td>
+                            <select class="ui fluid dropdown search selection" id="gps_station">
+                                <option value="" disabled selected>請選擇GPS測站</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>開始時間</td>
+                        <td>
+                            <div class="ui input">
+                                <input type="text" id="startdate" class="datepick" disabled>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>結束時間</td>
+                        <td>
+                            <div class="ui input">
+                                <input type="text" id="enddate" class="datepick" disabled>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="ListOptions" style="">
+                                <input type="button" class="ui primary button fluid disabled" value="查詢" onclick="GPS.QueryGPS()">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="font-size:14px;color:red;">*本網站GPS資料由<a href="http://gps.earth.sinica.edu.tw/" target="_blank">中央研究院地球科學研究所</a>提供</div>
+        </div>
+        <div>查詢結果：<span id="gps_result"></span></div>
+        <div class="ui segment gpsresult" style="display:none;" id="gps_container"></div>
+        <div class="ui segment gpsresult" style="display:none;" id="gps_containerN"></div>
+        <div class="ui segment gpsresult" style="display:none;" id="gps_containerE"></div>
+    </div>
+    <script type="text/javascript" src="js/Plug_in/highcharts.js"></script>
+    <script type="text/javascript" src="map_module/widget/ExpertModule/jGPS.js"></script>
+    <script>
+        $('.ui.dropdown').dropdown();
+        GPS.mapGPSInit();
+    </script>
+</body>
+</html>

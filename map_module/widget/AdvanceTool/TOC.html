@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #layerlist {
+            font-family: 'Microsoft JhengHei';
+        }
+
+            #layerlist .header {
+                font-family: 'Microsoft JhengHei';
+                font-size: 16px;
+                cursor: initial;
+            }
+
+            #layerlist .checkbox {
+                float: left;
+            }
+
+            #layerlist div.description {
+                font-size: 10px;
+                float: left;
+            }
+
+            #layerlist img.layerBtns {
+                float: right;
+                cursor: pointer;
+                /*display: none;*/
+            }
+
+            #layerlist .content {
+                height: 32px;
+            }
+
+    </style>
+</head>
+<body>
+    <h2>圖層列表</h2>
+    <div>
+        <div class="ui info small message"><i class="angle double down icon"></i>請勾選下方圖層列表進行圖資套疊</div>
+        <div class="ui segment">
+            <div class="ui relaxed divided list" id="layerlist">
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="map_module/widget/AdvanceTool/jTOC.js"></script>
+    <script>
+        //initTOCLayer();
+        toc.initTOCLayer();
+    </script>
+</body>
+</html>

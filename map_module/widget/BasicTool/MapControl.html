@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        div.checkbox {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>圖面顯示功能</h2>
+    <div class="ui left aligned grid">
+        <div class="column">
+            <div class="ui segment" id="mapcontrolgrid">
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" id="showZoomSlider">
+                    <label>顯示縮放滑動條</label>
+                </div>
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" id="showMouseCoor">
+                    <label>顯示滑鼠位置坐標</label>
+                </div>
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" id="showScale">
+                    <label>顯示比例尺</label>
+                </div>
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" id="showEagleEye">
+                    <label>顯示鷹眼</label>
+                </div>
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" id="showFullScreenBtn">
+                    <label>顯示全螢幕按鈕</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui left aligned grid">
+        <div class="column">
+            <div class="ui segment">
+                <div>
+                    <div class="ui toggle checkbox">
+                        <input type="checkbox" id="showLayerSearch">
+                        <label>開啟圖層探查功能</label>
+                    </div>
+                    <table class="ui very basic compact table" id="layersearchtable" style="display:none;width:100%;">
+                        <thead>
+                            <tr>
+                                <th>圖層名稱</th>
+                                <th class="center aligned">探查</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div class="ui info small message">
+                        <ul class="list">
+                            <li>目前使用之底圖不會出現在清單中</li>
+                            <li>可使用鍵盤 ↑ 和 ↓ 調整圓圈大小</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="map_module/widget/BasicTool/jMapControl.js"></script>
+    <script>
+        initMapControlPage();
+    </script>
+</body>
+</html>

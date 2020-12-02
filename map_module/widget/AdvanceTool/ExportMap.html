@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #exportmapseg tr {
+            height:50px;
+        }
+    </style>
+</head>
+<body>
+    <h2>地圖列印</h2>
+    <div>
+        <div id="exportmapseg" class="ui segment">
+            <table style="width:100%;">
+                <tbody>
+                    <tr>
+                        <td style="width:75px;">頁面大小</td>
+                        <td>
+                            <select class="ui fluid dropdown" id="format">
+                                <option value="a0">A0 (slow)</option>
+                                <option value="a1">A1</option>
+                                <option value="a2">A2</option>
+                                <option value="a3">A3</option>
+                                <option value="a4" selected>A4</option>
+                                <option value="a5">A5 (fast)</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>解析度</td>
+                        <td>
+                            <select class="ui fluid dropdown" id="resolution">
+                                <option value="72">72 dpi (fast)</option>
+                                <option value="150">150 dpi</option>
+                                <option value="200" selected>200 dpi</option>
+                                <option value="300">300 dpi (slow)</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>比例尺</td>
+                        <td>
+                            <select class="ui fluid dropdown" id="scale">
+                                <option value="500">1:500000</option>
+                                <option value="250" selected>1:250000</option>
+                                <option value="100">1:100000</option>
+                                <option value="50">1:50000</option>
+                                <option value="25">1:25000</option>
+                                <option value="10">1:10000</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>輸出格式</td>
+                        <td>
+                            <select class="ui fluid dropdown" id="imageformat">
+                                <option value="PNG" selected>PNG</option>
+                                <option value="JPEG">JPEG</option>
+                                <option value="PDF">PDF</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" style="margin-top:10px;" id="exportMapBtn" value="export" onclick="exportmap.WebMapExport()" class="fluid ui primary basic button">輸出</button>
+        </div>
+    </div>
+    <script src="https://unpkg.com/dom-to-image-more@2.8.0/dist/dom-to-image-more.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script type="text/javascript" src="map_module/widget/AdvanceTool/jExportMap.js"></script>
+    <script>
+        $('.ui.dropdown').dropdown();
+    </script>
+</body>
+</html>

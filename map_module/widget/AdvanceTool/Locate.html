@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .ui.attached.tab.segment div.input {
+            margin: 5px 0px 5px 0px;
+        }
+        .ui.attached.tab.segment div.dropdown {
+            margin: 0px 0px 5px 0px;
+        }
+    </style>
+</head>
+<body>
+    <h2>圖面空間定位</h2>
+    <div>
+        <div class="ui top attached tabular menu">
+            <a class="item active" data-tab="locate_xy">坐標</a>
+            <a class="item" data-tab="locate_county">縣市</a>
+            <a class="item" data-tab="locate_roadmile">道路里程</a>
+        </div>
+        <div class="ui bottom attached tab segment active" data-tab="locate_xy" id="locate_xy_tool">
+            <table style="width:100%;">
+                <tbody>
+                    <tr>
+                        <td style="width:75px;">坐標系統</td>
+                        <td>
+                            <select class="ui fluid dropdown" id="locatexy_epsg">
+                                <option value="epsg4326" selected>WGS84 (EPSG:4326)</option>
+                                <option value="epsg3826">TWD97 (EPSG:3826)</option>
+                                <option value="epsg3857">WebMercator (EPSG:3857)</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>X坐標</td>
+                        <td>
+                            <div class="ui fluid icon input">
+                                <input type="text" id="locatexy_x" placeholder="請輸入X坐標">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Y坐標</td>
+                        <td>
+                            <div class="ui fluid icon input">
+                                <input type="text" id="locatexy_y" placeholder="請輸入Y坐標">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="fluid ui primary button" type="button" onclick="locate.locateXY()" style="margin-top:5px;">定位</button>
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="locate_county" id="locate_county_tool">
+            <table style="width:100%;">
+                <tbody>
+                    <tr>
+                        <td style="width:75px;">選擇縣市</td>
+                        <td>
+                            <select class="ui fluid dropdown" id="ddl_County">
+                                <option value="">請選擇</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="fluid ui primary button" type="button" onclick="locate.locateCounty()" style="margin-top:5px;">定位</button>
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="locate_roadmile" id="locate_roadmile_tool">
+            <table style="width:100%;">
+                <tbody>
+                    <tr>
+                        <td style="width:75px;">道路分類</td>
+                        <td>
+                            <select class="ui fluid dropdown" id="ddl_RoadClass" onchange="locate.getRoadIDList(this)">
+                                <option value="">請選擇</option>
+                                <option value="0">國道</option>
+                                <option value="1">省道快速公路</option>
+                                <option value="3">省道一般公路</option>
+                                <option value="4">市道、縣道</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:75px;">道路名稱</td>
+                        <td>
+                            <select class="ui fluid dropdown" id="ddl_RoadName">
+                                <option value="">請先選擇道路分類</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:75px;">道路里程</td>
+                        <td>
+                            <div class="ui fluid icon input">
+                                <input type="text" id="input_Mileage" placeholder="範例：002K+000">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="fluid ui primary button" type="button" onclick="locate.locateRoadMile()" style="margin-top:5px;">定位</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="map_module/widget/AdvanceTool/jLocate.js"></script>
+    <script>
+        $('.menu .item').tab();
+        $('.ui.dropdown').dropdown();
+        locate.getCountyList();
+    </script>
+</body>
+</html>

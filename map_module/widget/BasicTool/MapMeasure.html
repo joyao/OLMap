@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        button.ui.button {
+            margin: 10px 0px 10px 0px;
+            font-family: 'Microsoft JhengHei';
+        }
+
+    </style>
+</head>
+<body>
+    <h2>圖面測量</h2>
+    <div>
+        <div id="measureBtn" class="ui segment">
+            <div class="ui checkbox">
+                <input type="checkbox" name="example" id="useGeodesic">
+                <label>使用大地測量方式計算</label>
+            </div>
+            <button type="button" id="measureLineBtn" value="length" class="fluid ui primary basic button">量測距離</button>
+            <button type="button" id="measureAreaBtn" value="area" class="fluid ui primary basic button">量測面積</button>
+        </div>
+        <div>
+            <button type="button" id="clearMeasureDrawBtn" value="area" class="fluid ui negative button">清除全部量測標示</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="map_module/widget/BasicTool/jMapMeasure.js"></script>
+    <script>
+
+    </script>
+</body>
+</html>

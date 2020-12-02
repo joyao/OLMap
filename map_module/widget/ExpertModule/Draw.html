@@ -1,0 +1,358 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .ui.menu a.item {
+            width: calc(100%/5);
+            padding: 10px 0px !important;
+            text-align: center;
+            display: block !important;
+        }
+
+        .attributetable tr {
+            height: 50px;
+        }
+
+        .attributetable td:first-child {
+            width: 35%;
+        }
+
+        .drawpolybtn {
+            width: 45%;
+            margin: 3px !important;
+        }
+    </style>
+    <link type="text/css" href="css/Plug_in/spectrum.css" rel="stylesheet" />
+</head>
+<body>
+    <h2>繪圖工具</h2>
+    <div>
+        <div class="ui top attached tabular menu">
+            <a class="item active" data-tab="point">點</a>
+            <a class="item" data-tab="line">折線</a>
+            <a class="item" data-tab="polygon">多邊形</a>
+            <a class="item" data-tab="text">文字</a>
+            <a class="item" data-tab="save">儲存</a>
+        </div>
+        <div class="ui bottom attached tab segment active" data-tab="point">
+            <table style="width:100%" class="attributetable" id="pointattribute">
+                <tr>
+                    <td>大小：</td>
+                    <td>
+                        <div class="ui fluid selection dropdown">
+                            <input type="hidden" id="pointsize" value="8">
+                            <i class="dropdown icon"></i>
+                            <div class="text">8</div>
+                            <div class="menu">
+                                <div class="item" data-value="8">8</div>
+                                <div class="item" data-value="10">10</div>
+                                <div class="item" data-value="12">12</div>
+                                <div class="item" data-value="14">14</div>
+                                <div class="item" data-value="16">16</div>
+                                <div class="item" data-value="18">18</div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>填充顏色：</td>
+                    <td>
+                        <div class="ui fluid input">
+                            <input type="text" id="pointfillcolor">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>透明度：</td>
+                    <td>
+                        <div class="ui range" id="pointfillopacity"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:center;">
+                        <button type="button" class="ui fluid blue button" id="pointdraw" onclick="draw.drawpoint()">繪點</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="line">
+            <table style="width:100%" class="attributetable" id="lineattribute">
+                <tr>
+                    <td>線寬：</td>
+                    <td>
+                        <div class="ui fluid selection dropdown">
+                            <input type="hidden" id="linewidth" value="2">
+                            <i class="dropdown icon"></i>
+                            <div class="text">2</div>
+                            <div class="menu">
+                                <div class="item" data-value="1">1</div>
+                                <div class="item" data-value="2">2</div>
+                                <div class="item" data-value="3">3</div>
+                                <div class="item" data-value="4">4</div>
+                                <div class="item" data-value="5">5</div>
+                                <div class="item" data-value="6">6</div>
+                                <div class="item" data-value="8">8</div>
+                                <div class="item" data-value="10">10</div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>顏色：</td>
+                    <td>
+                        <div class="ui fluid input">
+                            <input type="text" id="linefillcolor">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>透明度：</td>
+                    <td>
+                        <div class="ui range" id="linefillopacity"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:center;">
+                        <button type="button" class="ui fluid blue button" id="linedraw" onclick="draw.drawline()">繪線</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="polygon">
+            <table style="width:100%" class="attributetable" id="polygonattribute">
+                <tr>
+                    <td>顏色：</td>
+                    <td>
+                        <div class="ui fluid input">
+                            <input type="text" id="polygonfillcolor">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>透明度：</td>
+                    <td>
+                        <div class="ui range" id="polygonfillopacity"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>外框寬度：</td>
+                    <td>
+                        <div class="ui fluid selection dropdown">
+                            <input type="hidden" id="polygonoutlinewidth" value="2">
+                            <i class="dropdown icon"></i>
+                            <div class="text">2</div>
+                            <div class="menu">
+                                <div class="item" data-value="1">1</div>
+                                <div class="item" data-value="2">2</div>
+                                <div class="item" data-value="3">3</div>
+                                <div class="item" data-value="4">4</div>
+                                <div class="item" data-value="5">5</div>
+                                <div class="item" data-value="6">6</div>
+                                <div class="item" data-value="8">8</div>
+                                <div class="item" data-value="10">10</div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>外框顏色：</td>
+                    <td>
+                        <div class="ui fluid input">
+                            <input type="text" id="polygonoutlinecolor">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>外框透明度：</td>
+                    <td>
+                        <div class="ui range" id="polygonoutlineopacity"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:center;">
+                        <button type="button" class="ui blue button drawpolybtn" onclick="draw.drawpolygon('Polygon')">繪多邊形</button>
+                        <button type="button" class="ui blue button drawpolybtn" onclick="draw.drawpolygon('Circle')">繪圓形</button>
+                        <button type="button" class="ui blue button drawpolybtn" onclick="draw.drawpolygon('Square')">繪正方形</button>
+                        <button type="button" class="ui blue button drawpolybtn" onclick="draw.drawpolygon('Box')">繪長方形</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="text">
+            <table style="width:100%" class="attributetable" id="textattribute">
+                <tr>
+                    <td>大小：</td>
+                    <td>
+                        <div class="ui fluid selection dropdown">
+                            <input type="hidden" id="textsize" value="20">
+                            <i class="dropdown icon"></i>
+                            <div class="text">20</div>
+                            <div class="menu">
+                                <div class="item" data-value="12">12</div>
+                                <div class="item" data-value="14">14</div>
+                                <div class="item" data-value="16">16</div>
+                                <div class="item" data-value="18">18</div>
+                                <div class="item" data-value="20">20</div>
+                                <div class="item" data-value="24">24</div>
+                                <div class="item" data-value="30">30</div>
+                                <div class="item" data-value="36">36</div>
+                                <div class="item" data-value="48">48</div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>顏色：</td>
+                    <td>
+                        <div class="ui fluid input">
+                            <input type="text" id="textfillcolor">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>透明度：</td>
+                    <td>
+                        <div class="ui range" id="textfillopacity"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>內容：</td>
+                    <td>
+                        <div class="ui fluid input">
+                            <input type="text" id="textcontent">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:center;">
+                        <button type="button" class="ui fluid blue button" id="textdraw" onclick="draw.drawtext()">繪製文字</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="save">
+            <table style="width:100%" class="attributetable" id="saveattribute">
+                <tr>
+                    <td>標題：</td>
+                    <td>
+                        <div class="ui fluid input">
+                            <input type="text" id="savetitle">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>內容：</td>
+                    <td>
+                        <div class="ui fluid input">
+                            <input type="text" id="savecontent">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:center;">
+                        <button type="button" class="ui fluid blue button" id="savedraw" onclick="draw.savedraw()">儲存</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style="width:90%;margin: auto;">
+            <button type="button" class="ui fluid negative button" id="cleardraw" onclick="draw.clearalldraw()">清除全部圖面繪圖</button>
+        </div>
+        <div class="ui segment" style="display:none;">
+            <p style="margin:0px 0px 10px 0px;">使用者已儲存列表：</p>
+            <div class="ui small cards" id="drawcasescards">
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/Plug_in/spectrum.js"></script>
+    <script type="text/javascript" src="map_module/widget/ExpertModule/jDraw.js"></script>
+    <script>
+        $('.menu .item').tab();
+        $('.ui.dropdown').dropdown();
+        $("#pointfillcolor").spectrum({
+            preferredFormat: "hex",
+            color: "#FF0000",
+            change: function (color) {
+                color.toHexString();
+                console.log(color.toHexString())
+            }
+        });
+        $('#pointfillopacity').slider({
+            min: 0,
+            max: 100,
+            value: 50,
+            slide: function (e, ui) {
+                console.log(ui.value)
+            }
+        });
+        $("#linefillcolor").spectrum({
+            preferredFormat: "hex",
+            color: "#FF0000",
+            change: function (color) {
+                color.toHexString();
+                console.log(color.toHexString())
+            }
+        });
+        $('#linefillopacity').slider({
+            min: 0,
+            max: 100,
+            value: 50,
+            slide: function (e, ui) {
+                console.log(ui.value)
+            }
+        });
+        $("#polygonfillcolor").spectrum({
+            preferredFormat: "hex",
+            color: "#FF0000",
+            change: function (color) {
+                color.toHexString();
+                console.log(color.toHexString())
+            }
+        });
+        $("#polygonoutlinecolor").spectrum({
+            preferredFormat: "hex",
+            color: "#000000",
+            change: function (color) {
+                color.toHexString();
+                console.log(color.toHexString())
+            }
+        });
+        $('#polygonfillopacity').slider({
+            min: 0,
+            max: 100,
+            value: 50,
+            slide: function (e, ui) {
+                console.log(ui.value)
+            }
+        });
+        $('#polygonoutlineopacity').slider({
+            min: 0,
+            max: 100,
+            value: 100,
+            slide: function (e, ui) {
+                console.log(ui.value)
+            }
+        });
+        $("#textfillcolor").spectrum({
+            preferredFormat: "hex",
+            color: "#008bff",
+            change: function (color) {
+                color.toHexString();
+                console.log(color.toHexString())
+            }
+        });
+        $('#textfillopacity').slider({
+            min: 0,
+            max: 100,
+            value: 100,
+            slide: function (e, ui) {
+                console.log(ui.value)
+            }
+        });
+        $('#savetitle').val(new Date().Format("yyyy-MM-dd"));
+        draw.getUserDrawCaseList();
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        div.circle {
+            width: 20px;
+            height: 20px;
+            border-radius:999em;
+            display: inline-block;
+            cursor: pointer;
+        }
+            div.circle.normal {
+                background-color: #43ef0a;
+            }
+
+            div.circle.WarningLevel3 {
+                background-color: yellow;
+            }
+
+            div.circle.WarningLevel2 {
+                background-color: orange;
+            }
+
+            div.circle.WarningLevel1 {
+                background-color: red;
+            }
+
+            div.circle.unknown {
+                background-color: gray;
+            }
+    </style>
+</head>
+<body>
+    <h2>河川水位查詢</h2>
+    <div style="float:right; padding:0px 10px 5px 10px; cursor:pointer;" id="waterlevelLoadingInfo" onclick="waterlevel.getWeterLevelData()"><i class="sync alternate blue icon"></i></div>
+    <div style="float:right; padding:0px 0px 5px 0px; color:#2486d0;" id="waterlevelTime"></div>
+    <div>
+
+        <table class="ui compact center aligned table">
+            <thead>
+                <tr>
+                    <th style="width:65px;">所在地</th>
+                    <th>測站名</th>
+                    <th>水位高(公尺)</th>
+                    <th style="width:50px;">警戒燈號</th>
+                </tr>
+            </thead>
+            <tbody id="waterlaveltable">
+            </tbody>
+        </table>
+
+    </div>
+    <script type="text/javascript" src="map_module/widget/ExpertModule/jWaterLevel.js"></script>
+    <script>
+        waterlevel.getWeterLevelData();
+    </script>
+</body>
+</html>

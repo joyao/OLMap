@@ -1,0 +1,129 @@
+﻿#map {
+    width: calc(100% - 220px);
+    height: 100%;
+    position: absolute;
+    margin-left: 220px;
+}
+
+    /*#map .ol-zoom .ol-zoom-out {
+        margin-top: 204px;
+    }*/
+
+    #map .ol-zoomslider {
+        background-color: transparent;
+        top: 2.3em;
+        left: auto;
+        right: 7px;
+    }
+
+    #map .ol-touch .ol-zoom .ol-zoom-out {
+        margin-top: 212px;
+    }
+
+    #map .ol-touch .ol-zoomslider {
+        top: 2.75em;
+    }
+
+    #map .ol-zoom-in.ol-has-tooltip:hover [role=tooltip],
+    #map .ol-zoom-in.ol-has-tooltip:focus [role=tooltip] {
+        top: 3px;
+    }
+
+    #map .ol-zoom-out.ol-has-tooltip:hover [role=tooltip],
+    #map .ol-zoom-out.ol-has-tooltip:focus [role=tooltip] {
+        top: 232px;
+    }
+    /**
+        * 缩放控件zoomToExtent的样式设置
+        */
+    #map .ol-zoom-extent {
+        top: 280px;
+        left: auto;
+        right: 7px;
+    }
+
+    #map .ol-overlaycontainer-stopevent {
+        position: fixed;
+        /*right: 50px;
+        top: 60px;*/
+    }
+
+    #map .ol-zoom.ol-control {
+        left: auto;
+        right: 7px;
+        top: 40px;
+    }
+
+
+.ol-scale-line {
+    left: inherit;
+    right: 50px;
+}
+
+.ol-custom-overviewmap, .ol-custom-overviewmap.ol-uncollapsible {
+    bottom: 50px;
+    left: auto;
+    right: 0;
+    top: auto;
+}
+    /* 鷹眼控件展開時外框樣式 */
+    .ol-custom-overviewmap:not(.ol-collapsed) {
+        border: 1px solid black;
+    }
+    /* 鷹眼地圖容器樣式 */
+    .ol-custom-overviewmap .ol-overviewmap-map {
+        border: none;
+        width: 200px;
+    }
+    /* 鷹眼對應範圍樣式 */
+    .ol-custom-overviewmap .ol-overviewmap-box {
+        border: 2px solid red;
+    }
+    /* 鷹眼控件展開時的樣式 */
+    .ol-custom-overviewmap:not(.ol-collapsed) button {
+        bottom: auto;
+        left: auto;
+        right: 1px;
+        top: 1px;
+    }
+
+.tooltip {
+    position: relative;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    color: white;
+    padding: 4px 8px;
+    opacity: 0.7;
+    white-space: nowrap;
+}
+
+.tooltip-measure {
+    opacity: 1;
+    font-weight: bold;
+}
+
+.tooltip-static {
+    background-color: #ffcc33;
+    color: black;
+    border: 1px solid white;
+}
+
+    .tooltip-measure:before,
+    .tooltip-static:before {
+        border-top: 6px solid rgba(0, 0, 0, 0.5);
+        border-right: 6px solid transparent;
+        border-left: 6px solid transparent;
+        content: "";
+        position: absolute;
+        bottom: -6px;
+        margin-left: -7px;
+        left: 50%;
+    }
+
+    .tooltip-static:before {
+        border-top-color: #ffcc33;
+    }
+
+.popover-body {
+    width: 160px;
+}
